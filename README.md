@@ -13,4 +13,4 @@ The simulation relies on a quadtree for O(_n_ log _n_) spatial indexing, allowin
 
 ## Use
 
-Right now the interface is minimal, but feel free to manipulate the sliders to adjust the area of effect for the cohesion, alignment, and separation forces.  Larger values mean each respective force will act on neighboring boids at greater distances from each other.  The defaults are sensible, but the emergent behavior of the flock changes in interesting ways as you tweak the AoEs.
+Right now the interface is minimal, but feel free to manipulate the sliders to adjust the areas of effect for the cohesion, alignment, and separation forces.  Larger values mean each respective force will act on neighboring boids at greater distances from each other.  The defaults are sensible, but the emergent behavior of the flock changes in interesting ways as you tweak the AoEs.
