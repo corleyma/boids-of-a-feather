@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Boids of a Feather</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates" rel="stylesheet">
+  <script src="./bundle.js"></script>
+  <script src="./slider.js"></script>
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+  <main>
+    <div class="header">
+      <h1>Boids of a Feather</h1>
+      <div class="controls">
+        <form class="range">
+          <span class="label">Cohesion/Alignment AoE:  </span>
+          <input id="cohesion-alignment-area" name="cohArea" class="range-slider__range"
+                 type="range" min="0" max="40" value="25" step="5" />
+          <output for="cohArea" onforminput="value = cohArea.valueAsNumber;">25</output>
+        </form>
+
+
+        <form class="range">
+          <span class="label">Separation Force AoE:  </span>
+          <input id="sepArea" name="sepArea" type="range" class="range-slider__range" min="0"
+                 max="16" value="8" step="2" />
+          <output for="sepArea" onforminput="value = sepArea.valueAsNumber;">8</output>
+        </form>
+      </div>
+    </div>
+
+    <div id="canvas">
+      <canvas id="flockCanvas"></canvas>
+    </div>
+
+  </main>
+</body>
+
+</html>
