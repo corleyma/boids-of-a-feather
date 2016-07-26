@@ -94,7 +94,7 @@ export default class Boid {
     // const aoeBounds = new BoxPoint(position.x, position.y, aoe.width, aoe.height);
     // const neighbors = quadtree.retrieve(aoeBounds);
 
-    neighbors = neighbors.slice(0,20)
+    neighbors = neighbors.slice(0,100)
 
     return neighbors;
 
