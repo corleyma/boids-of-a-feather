@@ -159,7 +159,7 @@ export default class Boid {
   }
 
   boundaryAvoidance(){
-    const bounds =  [80, 50, window.innerHeight-130, window.innerWidth-100];
+    const bounds =  [100, 50, window.innerHeight-130, window.innerWidth-100];
     let result = new Vector(0, 0);
 
     if (this.position.x < bounds[1]) {
