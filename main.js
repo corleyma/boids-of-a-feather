@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
   context.fillRect(0, 0, canvas.width, canvas.height);
 
   function animate() {
+    canvas.beginPath(); 
     context.fillStyle = 'rgba(0,0,0,0.15)';
     context.fillRect(0, 0, canvas.width, canvas.height);
     window.flock.forEach(function(boid) {
