@@ -89,13 +89,15 @@ export default class Boid {
                          new Point(position.x+aoe, position.y+aoe));
     let neighbors = quadtree.queryRange(aoeRange);
 
+
     //get all boids within AoE
     // const aoeBounds = new BoxPoint(position.x, position.y, aoe.width, aoe.height);
     // const neighbors = quadtree.retrieve(aoeBounds);
 
-    neighbors = neighbors.map((neighbor)=>{
-     return neighbor.value;
-    });
+    neighbors = neighbors.slice(0,99)
+                         .map( (neighbor)=>{
+                           return neighbor.value;
+                         });
 
     return neighbors;
 
