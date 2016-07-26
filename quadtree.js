@@ -7,7 +7,7 @@ export default class Quadtree {
     this.children = null;
     this.value = [];
     this.max = max || 15; //maximum points allowed per node
-    this.max_level = maxLevel || 20
+    this.max_level = maxLevel || 10
     this.level = level || 0
   }
 

@@ -95,9 +95,6 @@ export default class Boid {
     // const neighbors = quadtree.retrieve(aoeBounds);
 
     neighbors = neighbors.slice(0,20)
-                         .map( (neighbor)=>{
-                           return neighbor.value;
-                         });
 
     return neighbors;
 
@@ -114,7 +111,7 @@ export default class Boid {
     if(neighbors.length === 0){ return result; }
 
     for (let i = 0; i < neighbors.length; i++) {
-      result = result.add(neighbors[i].position);
+      result = result.add(neighbors[i].value.position);
     }
 
     //average
@@ -136,7 +133,7 @@ export default class Boid {
     { return result; }
 
     for (let i = 0; i < neighbors.length; i++) {
-      result = result.add(neighbors[i].velocity);
+      result = result.add(neighbors[i].value.velocity);
     }
     result.multiplyScalar(1/neighbors.length);  //avg neighbor orientation
     return result;
@@ -153,7 +150,7 @@ export default class Boid {
 
     //determine the repulsion vector and add to final result
     for (let i = 0; i < neighbors.length; i++) {
-      result = result.add(this.position.sub(neighbors[i].position));
+      result = result.add(this.position.sub(neighbors[i].value.position));
     }
 
     //get average
@@ -162,7 +159,7 @@ export default class Boid {
   }
 
   boundaryAvoidance(){
-    const bounds =  [50, 50, window.innerHeight-130, window.innerWidth-100];
+    const bounds =  [80, 50, window.innerHeight-130, window.innerWidth-100];
     let result = new Vector(0, 0);
 
     if (this.position.x < bounds[1]) {
