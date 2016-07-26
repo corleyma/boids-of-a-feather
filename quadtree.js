@@ -2,11 +2,13 @@ import Box from "./box"
 import Point from "./point"
 
 export default class Quadtree {
-  constructor(box, max) {
+  constructor(box, max, maxLevel, level) {
     this.box = box;
     this.children = null;
     this.value = [];
-    this.max = max || 10; //maximum points allowed per node
+    this.max = max || 15; //maximum points allowed per node
+    this.max_level = maxLevel || 20
+    this.level = level || 0
   }
 
   insert(point, object) {
@@ -18,7 +20,12 @@ export default class Quadtree {
     //if is a leaf node and not full, then insert
     //need to check if it already exists though
     let i;
-    if (this.children === null && this.value.length < this.max){
+    if ( this.children === null &&
+         ( (this.value.length < this.max) ||
+           (this.level === this.maxLevel)
+         )
+       ){
+
       for( i = 0; i < this.value.length; i++ ){
         if(this.value[i].point.equals(point)){
           this.value[i].value = object;
@@ -30,7 +37,7 @@ export default class Quadtree {
     }
 
     //if is a leaf node but full, call split
-    if(this.children === null){
+    if(this.children === null && this.level < this.maxLevel){
         this.split();
     }
 
@@ -44,9 +51,13 @@ export default class Quadtree {
 
   split() {
     //split into 4 congruent child quadrants using box quadrant method
+    nextLevel = this.level + 1
     this.children = this.box.split();
-    for(var i = 0; i < this.children.length; i++){
-      this.children[i] = new Quadtree(this.children[i], this.max);
+    for(var i = 0; i < this.children.length; i++) {
+      this.children[i] = new Quadtree(this.children[i],
+                                      this.max,
+                                      this.maxLevel,
+                                      this.nextLevel);
     }
     //redistribute values to appropriate child nodes
     for(i = 0; i < this.value.length; i++){
